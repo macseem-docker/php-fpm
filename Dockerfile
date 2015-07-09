@@ -2,7 +2,8 @@ FROM debian:7.7
 MAINTAINER Max D <lugamax@gmail.com>
 ADD ssh /root/.ssh
 ADD init/init.sh /init.sh
-RUN apt-get update \
+RUN chmod 400 /root/.ssh/id_rsa \
+    && apt-get update \
     && apt-get install -q -y  software-properties-common python-software-properties \
     && add-apt-repository 'deb http://http.debian.net/debian wheezy-backports main' \
     && apt-key adv --fetch-keys http://www.dotdeb.org/dotdeb.gpg \
